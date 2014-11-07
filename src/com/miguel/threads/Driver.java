@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.miguel.resources.Building;
 
-public class Driver {
+public class Driver { 
 	
 	public static void main(String[] args) throws IOException {
 		int n = 1; // Number of elevators

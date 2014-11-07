@@ -38,12 +38,15 @@ public class Person implements Runnable {
 				// Get on the elevator
 				this.getBuilding().getOnElevator(this);
 												
-				// TODO Once the person enters the elevator, it needs to wait unitl it reaches its floor
+				// TODO Once the person enters the elevator, it needs to wait until it reaches its floor
 				while(this.getCurrentFloor() != destinationFloor) {
 					Thread.sleep(20);
 				}
 				
-				Thread.sleep(this.getWaitTime());	
+				// Do stuff in that floor
+				Thread.sleep(this.getWaitTime());
+				
+				// Increment the floor
 				this.setNextFloor(this.getNextFloor() + 1);
 			}
 		}

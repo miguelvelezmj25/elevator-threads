@@ -18,12 +18,7 @@ public class Building {
 	private Lock[] 			floorLock;
 	private Condition[] 	availableCondition;
 	
-	public Building(int elevatorCount, int floorCount) {
-//		for(int i=0;i<elevatorCount;i++){
-//			elevators.add(new Elevator(i, this));
-//			new Thread(elevators.get(i)).start();
-//		}
-		
+	public Building(int elevatorCount, int floorCount) {		
 		this.floors = floorCount + 1;
 		this.floorLock = new Lock[this.floors];
 		this.availableCondition = new Condition[this.floors];
@@ -33,10 +28,6 @@ public class Building {
 			this.availableCondition[i] = this.floorLock[i].newCondition(); // Condition tied to lock
 			
 		}
-//		this.elevator = new Elevator(0, this);
-//		
-//		// Start elevator thread
-//		new Thread(elevator).start();
 	}
 	
 	/** Called by the person object when they want to get on the elevator
@@ -50,20 +41,17 @@ public class Building {
 			
 			while(!canGetIn) {			
 				for(int i = 0; i < this.getElevators().size(); i++) {
+					// Current elevator
 					elevatorId = i;
 					
-//					System.out.println("\t" +person.getName() + " checking elevator: " + elevatorId);
-					// Wait until the elevator is not on the same floor
-	//				while(person.getCurrentFloor() != this.getElevators().get(i).getCurrentFloor() ||
-	//						this.getElevators().get(i).getCurrentNumPeople() >= this.getElevators().get(i).getMaxCapacity()) { 
-	//					// Wait
-	//					this.getAvailableCondition().await();
-	//				}
+					// Check direction
 					boolean sameDirection = true;
-					
 					int personDirection = 0;
+					
+					// Get the person's direction
 					personDirection = person.getListFloor()[person.getNextFloor()] - person.getCurrentFloor();
 					
+					// Check if the current elevator is going on a different direction
 					if(personDirection > 0) {
 						if(this.getElevators().get(i).getDirection() < 0) {
 							sameDirection = false;
@@ -75,6 +63,8 @@ public class Building {
 						}
 					}
 										
+					// Only get in to the elevator if it is in the same floor, there is space, and it is going in the 
+					// same direction
 					if(person.getCurrentFloor() == this.getElevators().get(i).getCurrentFloor() &&
 							this.getElevators().get(i).getCurrentNumPeople() < this.getElevators().get(i).getMaxCapacity() &&
 							sameDirection) {
@@ -107,12 +97,9 @@ public class Building {
 		elevator.move();
 		System.out.println("\t\t\t\tElevator " + elevator.getId() + " arrived at floor " + elevator.getCurrentFloor());
 
-//		System.out.println(this.getFloorLock().length);
 		this.getFloorLock()[elevator.getCurrentFloor()].lock();
 		
 		try {
-			
-			
 			// Check the people that have arrived to their desired floor
 			ArrayList<Person> peopleToRemove = new ArrayList<Person>();
 			
