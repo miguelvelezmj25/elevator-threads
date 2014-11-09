@@ -9,7 +9,6 @@ import java.util.concurrent.locks.ReentrantLock;
 import com.miguel.threads.Elevator;
 import com.miguel.threads.Person;
 
-
 public class Building {
 	
 	private List<Elevator> 	elevators = new ArrayList<Elevator>();

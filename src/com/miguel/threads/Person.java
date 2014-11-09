@@ -3,7 +3,7 @@ package com.miguel.threads;
 import com.miguel.resources.Building;
 
 public class Person implements Runnable {
-		
+	
 	private String 		name;
 	private Building	building;
 	private int 		waitTime;
