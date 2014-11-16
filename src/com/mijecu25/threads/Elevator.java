@@ -94,8 +94,8 @@ public class Elevator implements Runnable {
 	
 	// Setters
 	
-	public void setDirection(int direction) { this.direction = direction; }
+	private void setDirection(int direction) { this.direction = direction; }
 
-	public void setCurrentFloor(int currentFloor) { this.currentFloor = currentFloor; }
+	private void setCurrentFloor(int currentFloor) { this.currentFloor = currentFloor; }
 	
 }
