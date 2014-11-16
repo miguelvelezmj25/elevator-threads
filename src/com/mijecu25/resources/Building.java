@@ -11,13 +11,14 @@ import com.mijecu25.threads.Person;
 
 public class Building {
 	
-	private List<Elevator> 	elevators = new ArrayList<Elevator>();
+	private List<Elevator> 	elevators;
 	private int 			floors;
 	 
 	private Lock[] 			floorLock;
 	private Condition[] 	availableCondition;
 	
-	public Building(int elevatorCount, int floorCount) {		
+	public Building(int elevatorCount, int floorCount) {	
+		this.elevators = new ArrayList<Elevator>();
 		this.floors = floorCount + 1;
 		this.floorLock = new Lock[this.floors];
 		this.availableCondition = new Condition[this.floors];
@@ -153,9 +154,10 @@ public class Building {
 		return this.availableCondition;
 	}
 
-	public void setElevators(ArrayList<Elevator> elevators) {
-		this.elevators = elevators;
-		
-	}
+	
+//	// Setters
+//	private void setElevators(ArrayList<Elevator> elevators) {
+//		this.elevators = elevators;	
+//	}
 	
 }

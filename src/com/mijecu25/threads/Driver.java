@@ -22,16 +22,14 @@ public class Driver {
 
 		// Reading the file which creates persons
 		ArrayList<Person> people = Driver.readFile(file,building);
-		ArrayList<Elevator> elevators = new ArrayList<Elevator>();
-		
 		
 		for(int i = 0; i < n; i++) {
-			elevators.add(new Elevator(i, building, people));
-			new Thread(elevators.get(i)).start();;
-		}
-		
-		building.setElevators(elevators);
+			Elevator elevator = new Elevator(i, building, people);
+			building.getElevators().add(elevator);
 			
+			new Thread(elevator).start();;
+		}
+					
 		// Starting the thread for each person.
 		for(int i = 0; i < people.size(); i++) {
 			new Thread(people.get(i)).start();;
