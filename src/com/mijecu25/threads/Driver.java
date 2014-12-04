@@ -13,7 +13,7 @@ import com.mijecu25.resources.Building;
 public class Driver { 
 	
 	public static void main(String[] args) throws IOException {
-		int n = 1; // Number of elevators
+		int n = 2; // Number of elevators
 		int f = 3; // Number of floors
 		String file = "src/input.txt"; // Input file
 		
