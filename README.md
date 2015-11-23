@@ -5,9 +5,7 @@ elevator-threads
 
 This project simulates a building with elevators and people. Elevators and people are threads. An input file specify the floors that each person wants to visit. The main logic executes the threads and handles the movement of elevators and people.
 
-================
-
-###License
+## License
 
 The MIT License (MIT)
 
